@@ -38,16 +38,16 @@ class AUCMetrics:
     count_speech_true: int
 
 
-def compute_overall_auc(y_true: List[List[int]], y_scores: List[List[float]]) -> AUCMetrics:
+def compute_overall_auc(y_bools: List[List[int]], y_scores: List[List[float]]) -> AUCMetrics:
     """Compute ROC and PR AUC scores for flattened predictions."""
-    flat_true = np.concatenate(y_true)
+    flat_bools = np.concatenate(y_bools)
     flat_scores = np.concatenate(y_scores)
 
     return AUCMetrics(
-        roc_auc=roc_auc_score(flat_true, flat_scores),
-        pr_auc=average_precision_score(flat_true, flat_scores),
-        count=len(flat_true),
-        count_speech_true=sum(flat_true),
+        roc_auc=roc_auc_score(flat_bools, flat_scores),
+        pr_auc=average_precision_score(flat_bools, flat_scores),
+        count=len(flat_bools),
+        count_speech_true=sum(flat_bools),
     )
 
 
