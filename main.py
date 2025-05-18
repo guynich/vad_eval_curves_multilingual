@@ -36,6 +36,7 @@ class AUCMetrics:
     pr_auc: float
     count: int
     count_speech_true: int
+    active_speech_hours: float
 
 
 def compute_overall_auc(y_bools: List[List[int]], y_scores: List[List[float]]) -> AUCMetrics:
@@ -48,6 +49,7 @@ def compute_overall_auc(y_bools: List[List[int]], y_scores: List[List[float]]) -
         pr_auc=average_precision_score(flat_bools, flat_scores),
         count=len(flat_bools),
         count_speech_true=sum(flat_bools),
+        active_speech_hours=sum(flat_bools) * 512 / (16000 * 3600),
     )
 
 
