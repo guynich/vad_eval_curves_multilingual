@@ -1,0 +1,11 @@
+datasets
+librosa
+matplotlib
+numpy
+onnxruntime
+scikit-learn
+sounddevice
+soundfile
+torch
+torchaudio
+
